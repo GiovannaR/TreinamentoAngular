@@ -1,23 +1,26 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-funcionario-form',
   templateUrl: './funcionario-form.component.html',
   styleUrls: ['./funcionario-form.component.css']
+
 })
 export class FuncionarioFormComponent  {
 
   ultimoId = 0;
   nome = '';
   adicionado = false;
-  funcionarioAdicionado = new EventEmitter(); 
+  
+  @Output() funcionarioAdicionado = new EventEmitter(); 
 
   adicionar(){
     this.adicionado = true;
-    const funcionario = ({
+    const funcionario = {
       id: ++this.ultimoId,
       nome: this.nome
-    });
+    };
+    this.funcionarioAdicionado.emit(funcionario);
   }
 
 }
