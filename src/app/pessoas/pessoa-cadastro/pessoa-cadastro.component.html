@@ -1,0 +1,61 @@
+<div class="container">
+  <form>
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Nova Pessoa</h1>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text">
+      </div>
+
+      <div class="ui-md-8 ui-g-12 ui-fluid">
+          <label>Logradouro</label>
+          <input pInputText type="text">
+      </div>
+
+      <div class="ui-md-4 ui-g-12 ui-fluid">
+          <label>Número</label>
+          <p-inputMask mask="(99)99999-9999" ngModel name="numero" #numero="ngModel"></p-inputMask>
+          <app-message [control]="numero" error="required" text="Informe um numero" ></app-message>
+          <app-message [control]="numero" error="required" text="Informe uma descrição" ></app-message>
+
+          </div>
+
+      <div class="ui-md-4 ui-g-12 ui-fluid">
+          <label>Complemento</label>
+          <input pInputText type="text">
+      </div>
+
+      <div class="ui-md-4 ui-g-12 ui-fluid">
+          <label>Bairro</label>
+          <input pInputText type="text">
+
+      </div>
+
+      <div class="ui-md-4 ui-g-12 ui-fluid">
+          <label>CEP</label>
+          <p-inputMask mask="999.999.999-99"></p-inputMask>
+      </div>
+
+      <div class="ui-md-6 ui-g-12 ui-fluid">
+          <label>Cidade</label>
+          <input pInputText type="text">
+      </div>
+
+      <div class="ui-md-6 ui-g-12 ui-fluid">
+          <label>Estado</label>
+          <input pInputText type="text">
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="submit" label="Novo" class="ui-button-info"></button>
+        <a href="javascript:;">Voltar para a pesquisa</a>
+      </div>
+
+    </div>
+  </form>
+
+</div>
