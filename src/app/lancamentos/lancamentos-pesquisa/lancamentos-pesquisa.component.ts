@@ -16,9 +16,9 @@ export class LancamentosPesquisaComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   descricao: string;
   // tslint:disable-next-line:member-ordering
-  dataVencimentoInicio: Date;
+  //dataVencimentoInicio: Date;
   // tslint:disable-next-line:member-ordering
-  dataVencimentoFim: Date;
+  //dataVencimentoFim: Date;
   // tslint:disable-next-line:member-ordering
   lancamentos = [];
 
@@ -29,11 +29,11 @@ export class LancamentosPesquisaComponent implements OnInit {
   pesquisar() {
     const filtro: LancamentoFiltro = {
       descricao: this.descricao,
-      dataVencimentoInicio: this.dataVencimentoInicio,
-      dataVencimentoFim: this.dataVencimentoFim
+      //dataVencimentoInicio: this.dataVencimentoInicio,
+      //dataVencimentoFim: this.dataVencimentoFim
     };
 
-    this.lancamentoservice.pesquisar(filtro)
+    this.lancamentoservice.pesquisar( filtro )
       .then(lancamento => this.lancamentos = lancamento);
   }
 
