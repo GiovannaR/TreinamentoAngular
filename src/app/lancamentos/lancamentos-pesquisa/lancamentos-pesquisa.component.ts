@@ -1,6 +1,7 @@
+import { LazyLoadEvent } from 'primeng/components/common/api';
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -9,32 +10,32 @@ import { DatePipe } from '@angular/common';
 })
 export class LancamentosPesquisaComponent implements OnInit {
 
-  ngOnInit(){
-    this.pesquisar();
-  }
 
-  // tslint:disable-next-line:member-ordering
-  descricao: string;
-  // tslint:disable-next-line:member-ordering
-  //dataVencimentoInicio: Date;
-  // tslint:disable-next-line:member-ordering
-  //dataVencimentoFim: Date;
-  // tslint:disable-next-line:member-ordering
+  totalRegistros = 0;
+  filtro = new LancamentoFiltro();
+
   lancamentos = [];
 
   constructor(private lancamentoservice: LancamentoService ) {
 
   }
 
-  pesquisar() {
-    const filtro: LancamentoFiltro = {
-      descricao: this.descricao,
-      //dataVencimentoInicio: this.dataVencimentoInicio,
-      //dataVencimentoFim: this.dataVencimentoFim
-    };
+  ngOnInit(){
+    //this.pesquisar();
+  }
 
-    this.lancamentoservice.pesquisar( filtro )
-      .then(lancamento => this.lancamentos = lancamento);
+  pesquisar(pagina = 0) {
+    this.filtro.pagina = pagina;
+    this.lancamentoservice.pesquisar( this.filtro )
+      .then(resultado =>
+        this.totalRegistros = resultado.total,
+        this.lancamentos = resultado.lancamentos
+      )}
+
+  aoMudarPagina(event: LazyLoadEvent) {
+    const pagina = event.first / event.rows;
+    console.log(event);
+    this.pesquisar(pagina);
   }
 
 }
