@@ -9,9 +9,7 @@ import { DatePipe } from '@angular/common';
 })
 export class LancamentosPesquisaComponent implements OnInit {
 
-  ngOnInit(){
-    this.pesquisar();
-  }
+
 
   // tslint:disable-next-line:member-ordering
   descricao: string;
@@ -22,9 +20,12 @@ export class LancamentosPesquisaComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   lancamentos = [];
 
-  constructor(private lancamentoservice: LancamentoService ) {
+  constructor(private lancamentoservice: LancamentoService ) { }
 
-  }
+  ngOnInit(){
+      this.pesquisar();
+    }
+
 
   pesquisar() {
     const filtro: LancamentoFiltro = {
