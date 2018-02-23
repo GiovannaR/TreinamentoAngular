@@ -10,7 +10,6 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { SharedModule } from './../shared/shared.module';
 
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
-import { LancamentoGridComponent } from './lancamento-grid/lancamento-grid.component';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 
 import { NgModule } from '@angular/core';
@@ -37,7 +36,6 @@ import { Http } from '@angular/http';
 
   ],
   declarations: [LancamentoCadastroComponent,
-    LancamentoGridComponent,
     LancamentosPesquisaComponent,
   ],
   exports: [
