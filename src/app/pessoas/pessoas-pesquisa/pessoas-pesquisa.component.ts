@@ -1,3 +1,5 @@
+import { LancamentoService } from './../../lancamentos/lancamento.service';
+import { PessoasFiltro, PessoasService } from './../pessoas.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,19 +7,25 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './pessoas-pesquisa.component.html',
   styleUrls: ['./pessoas-pesquisa.component.css']
 })
-export class PessoasPesquisaComponent {
+export class PessoasPesquisaComponent implements OnInit{
 
-  pessoas = [
-    { nome: 'Amanda Mansur', cidade: 'Uberlandia', estado: 'MG', status: 'Ativo'},
-    { nome: 'Julia Riqueti', cidade: 'Belo Horizonte', estado: 'MG', status: 'Inativo'},
-    { nome: 'Isabela Antunes', cidade: 'São Paulo', estado: 'SP', status: 'Ativo'},
-    { nome: 'Luis Gustavo', cidade: 'Rio de Janeiro', estado: 'RG', status: 'Ativo'},
-    { nome: 'Laura Abreu', cidade: 'Curitiba', estado: 'PR', status: 'Inativo'},
-    { nome: 'Lauro Cordeu', cidade: 'Florianópolis', estado: 'SC', status: 'Ativo'},
-    { nome: 'Catarina Julios', cidade: 'Salvador', estado: 'BA', status: 'Inativo'},
-    { nome: 'Lunara Lais Castro', cidade: 'Vitória', estado: 'ES', status: 'Ativo'},
-    { nome: 'Cara Lavrel', cidade: 'Goiânia', estado: 'GO', status: 'Inativo'},
-    { nome: 'Lucas Santos', cidade: '	Natal', estado: 'RN', status: 'Ativo'},
-  ];
+  //totalregistros = 0;
+  filtro = new PessoasFiltro();
+  pessoas = [];
+
+  constructor(private pessoaservice: PessoasService){}
+
+  ngOnInit(){
+    this.pesquisar();
+  }
+
+  pesquisar(){
+    this.pessoaservice.pesquisar(this.filtro)
+     .then(resultado => {
+       this.pessoas = resultado.pessoas;
+     });
+  }
+
+
 
 }

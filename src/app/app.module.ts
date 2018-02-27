@@ -1,3 +1,4 @@
+import { PessoasService } from './pessoas/pessoas.service';
 import { HttpModule } from '@angular/http';
 import { LancamentoService } from './lancamentos/lancamento.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,13 +13,15 @@ import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
+//import { PessoaPesquisarComponent } from './pessoas-pesquisar/pessoas-pesquisar.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormularioComponent,
+    FormularioComponent
+    //PessoaPesquisarComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { FormularioComponent } from './formulario/formulario.component';
 
  //   Bootstrapcss
   ],
-  providers: [ LancamentoService
+  providers: [ LancamentoService,
+    PessoasService
   ],
   bootstrap: [AppComponent]
 })
