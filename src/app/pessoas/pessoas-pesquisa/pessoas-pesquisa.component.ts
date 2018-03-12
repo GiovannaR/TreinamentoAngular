@@ -1,5 +1,5 @@
 import { LancamentoService } from './../../lancamentos/lancamento.service';
-import { PessoasFiltro, PessoasService } from './../pessoas.service';
+import { PessoasService } from './../pessoas.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,20 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class PessoasPesquisaComponent implements OnInit{
 
   //totalregistros = 0;
-  filtro = new PessoasFiltro();
+  //filtro = new PessoasFiltro();
   pessoas = [];
 
   constructor(private pessoaservice: PessoasService){}
 
   ngOnInit(){
-    this.pesquisar();
+   this.pesquisar();
   }
 
   pesquisar(){
-    this.pessoaservice.pesquisar(this.filtro)
-     .then(resultado => {
-       this.pessoas = resultado.pessoas;
-     });
+    this.pessoaservice.pesquisar()
+     .then(pessoa => this.pessoas = pessoa);
   }
 
 

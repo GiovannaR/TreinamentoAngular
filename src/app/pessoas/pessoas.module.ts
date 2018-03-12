@@ -7,7 +7,6 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { SharedModule } from './../shared/shared.module';
 
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
-import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 
 import { NgModule } from '@angular/core';
@@ -30,7 +29,6 @@ import { FormsModule } from '@angular/forms';
 
   ],
   declarations: [PessoaCadastroComponent,
-    PessoasGridComponent,
     PessoasPesquisaComponent],
   exports: [PessoaCadastroComponent,
     PessoasPesquisaComponent,
