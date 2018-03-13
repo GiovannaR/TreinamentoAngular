@@ -17,7 +17,7 @@ export class LancamentoFiltro {
 @Injectable()
 export class LancamentoService{
 
-  lancamentosUrl = 'http://localhost:8449/lancamentos?resumo';
+  lancamentosUrl = 'http://localhost:8449/lancamentos';
 
 
   constructor(private http: Http){
@@ -28,7 +28,7 @@ export class LancamentoService{
     const params = new URLSearchParams();
     const headers = new Headers();
     // tslint:disable-next-line:max-line-length
-    headers.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTk3NjE3ODIsInVzZXJfbmFtZSI6ImFkbWluQGFsZ2Ftb25leS5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9DQVRFR09SSUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX1JFTU9WRVJfUEVTU09BIiwiUk9MRV9DQURBU1RSQVJfTEFOQ0FNRU5UTyIsIlJPTEVfUEVTUVVJU0FSX0xBTkNBTUVOVE8iLCJST0xFX1JFTU9WRVJfTEFOQ0FNRU5UTyIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0NBVEVHT1JJQSJdLCJqdGkiOiIyZjYzODYyNy0wMWMwLTRjNTEtODhkZC0xMTBlYzgwZjk2NGYiLCJjbGllbnRfaWQiOiJhbmd1bGFyIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.qcJhLSurtxyeq9n4CiJmvWsF_ODlgAXH-HRoXGek7KE');
+    headers.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjEwNTM2ODQsInVzZXJfbmFtZSI6ImFkbWluQGFsZ2Ftb25leS5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9DQVRFR09SSUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX1JFTU9WRVJfUEVTU09BIiwiUk9MRV9DQURBU1RSQVJfTEFOQ0FNRU5UTyIsIlJPTEVfUEVTUVVJU0FSX0xBTkNBTUVOVE8iLCJST0xFX1JFTU9WRVJfTEFOQ0FNRU5UTyIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0NBVEVHT1JJQSJdLCJqdGkiOiI3Y2JiM2FjMi00OThkLTQwMzgtYmRlMi05ZTcyOTYzMDEyZWYiLCJjbGllbnRfaWQiOiJhbmd1bGFyIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.HX1FHQou4HoifBeKkHZo-S57yzCy91fubnULTQLgCNw');
 
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensporpagina.toString());
@@ -45,7 +45,7 @@ export class LancamentoService{
       params.set('dataVencimentoAte', moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
     }
 
-    return this.http.get(`${this.lancamentosUrl}`, { headers, search: params })
+    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, search: params })
       .toPromise().
       then(response => {
         const responseJson = response.json();
@@ -58,4 +58,13 @@ export class LancamentoService{
         return resultado;
       })
   }
+
+  excluir(codigo: number): Promise<void> {
+    const headers = new Headers();
+    // tslint:disable-next-line:max-line-length
+    headers.append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjEwNTM2ODQsInVzZXJfbmFtZSI6ImFkbWluQGFsZ2Ftb25leS5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9DQVRFR09SSUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX1JFTU9WRVJfUEVTU09BIiwiUk9MRV9DQURBU1RSQVJfTEFOQ0FNRU5UTyIsIlJPTEVfUEVTUVVJU0FSX0xBTkNBTUVOVE8iLCJST0xFX1JFTU9WRVJfTEFOQ0FNRU5UTyIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0NBVEVHT1JJQSJdLCJqdGkiOiI3Y2JiM2FjMi00OThkLTQwMzgtYmRlMi05ZTcyOTYzMDEyZWYiLCJjbGllbnRfaWQiOiJhbmd1bGFyIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.HX1FHQou4HoifBeKkHZo-S57yzCy91fubnULTQLgCNw');
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`, {headers})
+    .toPromise().then(() => null);
+  }
+
 }
