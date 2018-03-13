@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { CoreModule } from './core/core.module';
+import {ToastyModule} from 'ng2-toasty';
 
 
 import { AppComponent } from './app.component';
@@ -30,8 +31,8 @@ import { FormularioComponent } from './formulario/formulario.component';
     CoreModule,
     LancamentosModule,
     PessoasModule,
-    HttpModule
-
+    HttpModule,
+    ToastyModule.forRoot()
  //   Bootstrapcss
   ],
   providers: [ LancamentoService,
