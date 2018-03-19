@@ -11,9 +11,11 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { CoreModule } from './core/core.module';
 import {ToastyModule} from 'ng2-toasty';
 
+import {ConfirmDialogModule} from 'primeng/components/confirmdialog/confirmdialog';
 
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 //import { PessoaPesquisarComponent } from './pessoas-pesquisar/pessoas-pesquisar.component';
 
 
@@ -32,11 +34,13 @@ import { FormularioComponent } from './formulario/formulario.component';
     LancamentosModule,
     PessoasModule,
     HttpModule,
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
+    ConfirmDialogModule
  //   Bootstrapcss
   ],
   providers: [ LancamentoService,
-    PessoasService
+    PessoasService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LazyLoadEvent } from 'primeng/components/common/api';
+import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import { DatePipe } from '@angular/common';
 import { ToastyService } from 'ng2-toasty';
 
@@ -18,7 +18,8 @@ export class LancamentosPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid;
 
   constructor(private lancamentoservice: LancamentoService,
-     private toasty: ToastyService ) { }
+              private toasty: ToastyService,
+              private confirmation: ConfirmationService ) { }
 
   ngOnInit(){
       //this.pesquisar();
