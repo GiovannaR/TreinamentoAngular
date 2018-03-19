@@ -17,12 +17,13 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos = [];
   @ViewChild('tabela') grid;
 
-  constructor(private lancamentoservice: LancamentoService,
+  constructor(private lancamentoservice: LancamentoService
               private toasty: ToastyService,
-              private confirmation: ConfirmationService ) { }
+              private confirmation: ConfirmationService
+            ) { }
 
   ngOnInit(){
-      //this.pesquisar();
+      this.pesquisar();
     }
 
 
@@ -41,6 +42,15 @@ export class LancamentosPesquisaComponent implements OnInit {
     this.pesquisar(pagina);
   }
 
+  confirmarExclusao(Lancamento: any){
+    this.confirmation.confirm({
+      message: 'Tem certeaz que deseja excluir?',
+      accept: () => {
+        this.excluir(Lancamento);
+      }
+    });
+  }
+
   excluir(lancamento: any){
     this.lancamentoservice.excluir(lancamento.codigo)
     .then(() => {
@@ -49,7 +59,6 @@ export class LancamentosPesquisaComponent implements OnInit {
       }else{
         this.grid.first = 0;
       }
-
       this.toasty.success('Lançamento excluído com sucesso!');
     });
   }

@@ -15,7 +15,7 @@ import {ConfirmDialogModule} from 'primeng/components/confirmdialog/confirmdialo
 
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { ConfirmationService } from 'primeng/components/common/api';
 //import { PessoaPesquisarComponent } from './pessoas-pesquisar/pessoas-pesquisar.component';
 
 
