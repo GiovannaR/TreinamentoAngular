@@ -3,7 +3,7 @@ import { HttpModule } from '@angular/http';
 import { LancamentoService } from './lancamentos/lancamento.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { PessoasModule } from './pessoas/pessoas.module';
@@ -40,7 +40,8 @@ import { ConfirmationService } from 'primeng/components/common/api';
   ],
   providers: [ LancamentoService,
     PessoasService,
-    ConfirmationService
+    ConfirmationService,
+    { provide: LOCALE_ID, useValue: 'pt-BR'}
   ],
   bootstrap: [AppComponent]
 })

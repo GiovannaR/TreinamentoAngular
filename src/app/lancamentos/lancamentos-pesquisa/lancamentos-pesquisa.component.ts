@@ -17,7 +17,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos = [];
   @ViewChild('tabela') grid;
 
-  constructor(private lancamentoservice: LancamentoService
+  constructor(private lancamentoservice: LancamentoService,
               private toasty: ToastyService,
               private confirmation: ConfirmationService
             ) { }
