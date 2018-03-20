@@ -1,6 +1,4 @@
-import { PessoasService } from './pessoas/pessoas.service';
 import { HttpModule } from '@angular/http';
-import { LancamentoService } from './lancamentos/lancamento.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -15,7 +13,7 @@ import {ConfirmDialogModule} from 'primeng/components/confirmdialog/confirmdialo
 
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { ConfirmationService } from 'primeng/components/common/api';
+
 //import { PessoaPesquisarComponent } from './pessoas-pesquisar/pessoas-pesquisar.component';
 
 
@@ -34,14 +32,10 @@ import { ConfirmationService } from 'primeng/components/common/api';
     LancamentosModule,
     PessoasModule,
     HttpModule,
-    ToastyModule.forRoot(),
-    ConfirmDialogModule
+
  //   Bootstrapcss
   ],
-  providers: [ LancamentoService,
-    PessoasService,
-    ConfirmationService,
-    { provide: LOCALE_ID, useValue: 'pt-BR'}
+  providers: [
   ],
   bootstrap: [AppComponent]
 })
