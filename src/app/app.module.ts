@@ -13,6 +13,7 @@ import {ConfirmDialogModule} from 'primeng/components/confirmdialog/confirmdialo
 
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
+import { CategoriasComponent } from './categorias/categorias.component';
 
 //import { PessoaPesquisarComponent } from './pessoas-pesquisar/pessoas-pesquisar.component';
 
@@ -21,7 +22,8 @@ import { FormularioComponent } from './formulario/formulario.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FormularioComponent
+    FormularioComponent,
+    CategoriasComponent
     //PessoaPesquisarComponent,
   ],
   imports: [

@@ -9,6 +9,7 @@ import { ConfirmationService } from 'primeng/components/common/api';
 import { PessoasService } from './../pessoas/pessoas.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
 import { ErrorHandlerService } from './error-handler.service';
+import { CategoriaService } from './../categorias/categoria.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { ErrorHandlerService } from './error-handler.service';
     providers: [
     LancamentoService,
     PessoasService,
+    CategoriaService,
 
     ErrorHandlerService,
 
